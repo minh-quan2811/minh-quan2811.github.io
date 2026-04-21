@@ -219,7 +219,7 @@ function renderProjects() {
     card.style.transitionDelay = `${i * 0.08}s`;
 
     const thumbContent = project.image
-      ? `<img src="${project.image}" alt="${project.title}" onerror="this.parentElement.innerHTML='<div class=\\"project-thumb-placeholder\\">${project.emoji}</div>'" />`
+      ? `<img src="${project.image}" alt="${project.title}" onerror="this.style.display='none'">`
       : `<div class="project-thumb-placeholder">${project.emoji}</div>`;
 
     // First <p> of story as card preview
@@ -233,6 +233,15 @@ function renderProjects() {
     const techHtml = (project.tech || [])
       .map(t => `<div class="card-tech-item"><span class="card-tech-dot"></span>${t}</div>`)
       .join('');
+
+    const githubLinkHtml = project.link
+      ? `<a href="${project.link}" target="_blank" class="card-github-link" onclick="event.stopPropagation()">
+           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+           </svg>
+           <span>GitHub</span>
+         </a>`
+      : '';
 
     card.innerHTML = `
       <div class="project-thumb">${thumbContent}</div>
@@ -251,6 +260,7 @@ function renderProjects() {
         <div class="card-panel card-panel-tech">
           <div class="card-tech-list">${techHtml}</div>
         </div>
+        ${githubLinkHtml}
       </div>
     `;
 
@@ -288,7 +298,7 @@ function openModal(project) {
     : '';
 
   const linkHtml = project.link
-    ? `<a href="${project.link}" target="_blank" class="modal-link">View Repository ↗</a>`
+    ? `<a href="${project.link}" target="_blank" class="modal-link">View Repository</a>`
     : '';
 
   const heroHtml = project.image
@@ -359,7 +369,7 @@ function initBackground() {
     const s1 = document.createElementNS(ns, 'stop');
     s1.setAttribute('offset', '0%');
     s1.setAttribute('stop-color', color);
-    s1.setAttribute('stop-opacity', '0.18');
+    s1.setAttribute('stop-opacity', '0.35');
     const s2 = document.createElementNS(ns, 'stop');
     s2.setAttribute('offset', '100%');
     s2.setAttribute('stop-color', color);
@@ -433,22 +443,28 @@ function initBackground() {
 
   const accents = [
     // Large thin ring top-right
-    { type: 'circle', cx: '92%', cy: '8%',  r: 120, stroke: 'rgba(200,101,26,0.10)', sw: 1,   fill: 'none' },
+    { type: 'circle', cx: '92%', cy: '8%',  r: 120, stroke: 'rgba(200,101,26,0.25)', sw: 2,   fill: 'none' },
     // Medium ring bottom-left
-    { type: 'circle', cx: '6%',  cy: '88%', r: 80,  stroke: 'rgba(184,134,11,0.09)', sw: 0.8, fill: 'none' },
+    { type: 'circle', cx: '6%',  cy: '88%', r: 80,  stroke: 'rgba(184,134,11,0.22)', sw: 1.5, fill: 'none' },
     // Small filled dot cluster — top left
-    { type: 'circle', cx: '3%',  cy: '30%', r: 4,   stroke: 'none', sw: 0, fill: 'rgba(200,101,26,0.14)' },
-    { type: 'circle', cx: '5%',  cy: '33%', r: 2.5, stroke: 'none', sw: 0, fill: 'rgba(200,101,26,0.10)' },
-    { type: 'circle', cx: '4%',  cy: '36%', r: 1.5, stroke: 'none', sw: 0, fill: 'rgba(200,101,26,0.08)' },
+    { type: 'circle', cx: '3%',  cy: '30%', r: 6,   stroke: 'none', sw: 0, fill: 'rgba(200,101,26,0.28)' },
+    { type: 'circle', cx: '5%',  cy: '33%', r: 4, stroke: 'none', sw: 0, fill: 'rgba(200,101,26,0.22)' },
+    { type: 'circle', cx: '4%',  cy: '36%', r: 2.5, stroke: 'none', sw: 0, fill: 'rgba(200,101,26,0.18)' },
     // Small ring mid-right
-    { type: 'circle', cx: '96%', cy: '50%', r: 40,  stroke: 'rgba(200,101,26,0.08)', sw: 0.8, fill: 'none' },
+    { type: 'circle', cx: '96%', cy: '50%', r: 50,  stroke: 'rgba(200,101,26,0.20)', sw: 1.5, fill: 'none' },
     // Cross/plus top-center
-    { type: 'line', x1: '49%', y1: '5%', x2: '51%', y2: '5%', stroke: 'rgba(200,101,26,0.15)', sw: 1 },
-    { type: 'line', x1: '50%', y1: '4%', x2: '50%', y2: '6%', stroke: 'rgba(200,101,26,0.15)', sw: 1 },
+    { type: 'line', x1: '48%', y1: '5%', x2: '52%', y2: '5%', stroke: 'rgba(200,101,26,0.30)', sw: 2 },
+    { type: 'line', x1: '50%', y1: '3%', x2: '50%', y2: '7%', stroke: 'rgba(200,101,26,0.30)', sw: 2 },
     // Thin horizontal rule far left
-    { type: 'line', x1: '0%',   y1: '60%', x2: '3%', y2: '60%', stroke: 'rgba(200,101,26,0.12)', sw: 0.8 },
+    { type: 'line', x1: '0%',   y1: '60%', x2: '4%', y2: '60%', stroke: 'rgba(200,101,26,0.25)', sw: 1.5 },
     // Corner bracket bottom-right
-    { type: 'path', d: 'M calc(100% - 40px) calc(100% - 20px) L calc(100% - 20px) calc(100% - 20px) L calc(100% - 20px) calc(100% - 40px)', stroke: 'rgba(200,101,26,0.13)', sw: 1, fill: 'none' },
+    { type: 'path', d: 'M calc(100% - 50px) calc(100% - 20px) L calc(100% - 20px) calc(100% - 20px) L calc(100% - 20px) calc(100% - 50px)', stroke: 'rgba(200,101,26,0.28)', sw: 2, fill: 'none' },
+    // Additional decorative elements
+    { type: 'circle', cx: '15%', cy: '65%', r: 3, stroke: 'none', sw: 0, fill: 'rgba(184,134,11,0.25)' },
+    { type: 'circle', cx: '85%', cy: '25%', r: 4, stroke: 'none', sw: 0, fill: 'rgba(200,101,26,0.20)' },
+    // Small rings scattered
+    { type: 'circle', cx: '25%', cy: '15%', r: 30, stroke: 'rgba(184,134,11,0.18)', sw: 1.2, fill: 'none' },
+    { type: 'circle', cx: '75%', cy: '65%', r: 35, stroke: 'rgba(200,101,26,0.16)', sw: 1.2, fill: 'none' },
   ];
 
   accents.forEach(a => {

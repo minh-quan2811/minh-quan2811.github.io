@@ -38,10 +38,10 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg);
   background-image:
-    radial-gradient(circle, rgba(200,101,26,0.12) 1px, transparent 1px),
-    radial-gradient(ellipse 65% 55% at 12% 18%, rgba(200,101,26,0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 55% 65% at 88% 78%, rgba(184,134,11,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 55% 48%, rgba(200,101,26,0.04) 0%, transparent 70%);
+    radial-gradient(circle, rgba(200,101,26,0.20) 1.5px, transparent 1.5px),
+    radial-gradient(ellipse 65% 55% at 12% 18%, rgba(200,101,26,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 65% at 88% 78%, rgba(184,134,11,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 45% at 55% 48%, rgba(200,101,26,0.08) 0%, transparent 70%);
   background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
   color: var(--ink);
   line-height: 1.7;
@@ -844,6 +844,62 @@ ul { list-style: none; }
 
 .card-tab:not(.active):hover {
   color: var(--ink-2);
+}
+
+/* GitHub link with text in project cards */
+.card-github-link {
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+  height: 32px;
+  padding: 0 12px;
+  background: var(--surface-alt);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.card-github-link:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.card-github-link svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.card-github-link:hover svg {
+  transform: scale(1.1);
+}
+
+.card-github-link span {
+  white-space: nowrap;
+}
+
+/* Make sure project-info has proper positioning */
+.project-info {
+  position: relative;
+  padding: 18px 20px 56px;
+}
+
+/* Adjust panel padding to accommodate GitHub link */
+.card-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  min-height: 72px;
+  padding-bottom: 4px;
 }
 
 /* Panels */

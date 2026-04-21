@@ -51,7 +51,7 @@ const PROJECTS = [
   {
     id: "emotion-recognition",
     year: "2025",
-    title: "Emotion Recognition System",
+    title: "WeFineCSI - Emotion Recognition System",
     shortDesc: "Deep learning model to detect human emotions from facial expressions.",
     tags: ["Deep Learning", "CNN", "Facial Analysis"],
     emoji: "😊",
@@ -69,7 +69,7 @@ const PROJECTS = [
       <p>One of the biggest challenges was handling partial occlusions and varying lighting. I addressed this with aggressive augmentation and attention mechanisms in the final convolutional layers.</p>
     `,
     images: [],
-    link: ""
+    link: "https://github.com/minh-quan2811/WeFineCSI"
   },
   {
     id: "rikai-internship",
@@ -97,7 +97,7 @@ const PROJECTS = [
   {
     id: "student-performance",
     year: "2025",
-    title: "Student Performance & Management System",
+    title: "SPARK - Student Performance & Management System",
     shortDesc: "Full-stack system for tracking and managing student academic data.",
     tags: ["Full Stack", "Database", "Python"],
     emoji: "📊",
@@ -115,12 +115,12 @@ const PROJECTS = [
       <p>I focused heavily on clean database schema design and API architecture, with role-based access so students, teachers, and admins each see appropriate views.</p>
     `,
     images: [],
-    link: ""
+    link: "https://github.com/minh-quan2811/SPARK"
   },
   {
     id: "bone-fracture",
     year: "2026",
-    title: "Bone Fracture Detection",
+    title: "FracturAInsight - Bone Fracture Detection",
     shortDesc: "Advanced medical imaging model for automated bone fracture classification.",
     tags: ["Medical AI", "CNN", "Image Segmentation"],
     emoji: "🦴",
@@ -138,7 +138,7 @@ const PROJECTS = [
       <p>The ongoing focus is improving robustness on edge cases — subtle hairline fractures, pediatric bones, and images with poor contrast. This project is being developed with the goal of supporting radiologists in under-resourced settings.</p>
     `,
     images: [],
-    link: ""
+    link: "https://github.com/minh-quan2811/FracturAInsight"
   },
 ];
 

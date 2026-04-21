@@ -24,13 +24,13 @@ function renderContact() {
             </p>
             <div class="contact-links">
 
-              <a href="mailto:danggminhquan2811@gmail.com" class="contact-link">
+              <button class="contact-link" onclick="copyEmail(this)" style="background:var(--surface);border:1px solid var(--border);cursor:pointer;width:100%;text-align:left;">
                 <div class="contact-link-icon">✉</div>
                 <div>
                   <div class="contact-link-label">Email</div>
                   <div class="contact-link-value">danggminhquan2811@gmail.com</div>
                 </div>
-              </a>
+              </button>
 
               <a href="https://github.com/minh-quan2811" target="_blank" class="contact-link">
                 <div class="contact-link-icon">

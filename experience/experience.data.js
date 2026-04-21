@@ -4,13 +4,58 @@
 ============================================================ */
 
 const COMPANIES = [
+  // ── ADD ANOTHER COMPANY BELOW ─────────────────────────────
+  {
+    id: "Padjadjaran",
+    name: "Padjadjaran University",
+    location: "Vietnam",
+    logo: "assets/companies/Padjadjaran.png",
+    logoFallback: "Padjadjaran University",
+    url: "https://www.unpad.ac.id/en/",
+    roles: [
+      {
+        title: "Research Collaborator",
+        type: "Thesis Project",
+        start: "Mar 2026",
+        end: "Jul 2026",
+        points: [
+          "Collaborated with students from Indonesia on a joint thesis project with Padjadjaran University.",
+          "Conducted research on detecting human fatigue using EEG (brainwave) signals.",
+          "Preprocessed EEG data and extracted features for fatigue analysis.",
+          "Built and evaluated machine learning models to classify different fatigue levels.",
+          "Co-authored the thesis report and documented research findings."
+        ],
+        tags: ["Python", "EEG", "Machine Learning", "Signal Processing", "Research"],
+      },
+    ],
+  },
+  {
+    id: "fpt",
+    name: "FPT Software",
+    location: "Da Nang City, Vietnam",
+    logo: "assets/companies/fpt.png",
+    logoFallback: "FPT Software",
+    url: "https://fptsoftware.com/",
+    roles: [
+      {
+        title: "AI Intern",
+        type: "Full-time",
+        start: "Dec 2025",
+        end: "Mar 2026",
+        points: [
+          "Contributed to a LLM-based recommendation pipeline to analyze legacy systems and propose target architectures and migration structures for system modernization.",
+        ],
+        tags: ["Python", "LLM"],
+      },
+    ],
+  },
   {
     id: "rikai",
     name: "RIKAI Co., Ltd",
     location: "Da Nang, Vietnam",
     logo: "assets/companies/rikai.jpg",
     logoFallback: "RI",
-    url: "",
+    url: "https://rikai.technology/",
     roles: [
       {
         title: "AI Engineer",
@@ -39,26 +84,4 @@ const COMPANIES = [
       },
     ],
   },
-
-  // ── ADD ANOTHER COMPANY BELOW ─────────────────────────────
-  // {
-  //   id: "acme",
-  //   name: "Acme Corp",
-  //   location: "Ho Chi Minh City, Vietnam",
-  //   logo: "assets/acme-logo.png",
-  //   logoFallback: "AC",
-  //   url: "https://acme.example.com",
-  //   roles: [
-  //     {
-  //       title: "Senior AI Engineer",
-  //       type: "Full-time",
-  //       start: "Nov 2025",
-  //       end: "Present",
-  //       points: [
-  //         "Led a team of 3 engineers building an internal LLM platform.",
-  //       ],
-  //       tags: ["Python", "FastAPI", "LLM"],
-  //     },
-  //   ],
-  // },
 ];

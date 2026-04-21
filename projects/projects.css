@@ -14,8 +14,18 @@
   overflow: hidden;
   cursor: pointer;
   box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   position: relative;
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(3px);
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease,
+              border-color 0.25s, box-shadow 0.25s;
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
 }
 
 .project-card:hover {
@@ -45,6 +55,16 @@
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
+}
+
+/* feature project card */
+.featured-star {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
 }
 
 /* Info area */
@@ -199,4 +219,39 @@
 
 @media (max-width: 700px) {
   .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* Modal story media blocks */
+.modal-story-media {
+  margin: 20px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.modal-story-media img,
+.modal-story-media video {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+  max-height: 340px;
+}
+
+.modal-story-media--row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.modal-story-media--row img,
+.modal-story-media--row iframe {
+  width: 100%;
+  height: 220px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .modal-story-media--row {
+    grid-template-columns: 1fr;
+  }
 }

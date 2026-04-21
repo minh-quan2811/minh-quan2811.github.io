@@ -25,8 +25,11 @@ function renderProjects() {
 
   PROJECTS.forEach((project, i) => {
     const card = document.createElement('div');
-    card.className = 'project-card reveal';
+    card.className = 'project-card';
     card.style.transitionDelay = `${i * 0.08}s`;
+    card.addEventListener('transitionend', () => {
+      card.style.transitionDelay = '0s';
+    }, { once: true });
 
     const thumbContent = project.image
       ? `<img src="${project.image}" alt="${project.title}" onerror="this.style.display='none'">`
@@ -42,6 +45,12 @@ function renderProjects() {
     const techHtml = (project.tech || [])
       .map(t => `<div class="card-tech-item"><span class="card-tech-dot"></span>${t}</div>`)
       .join('');
+
+    const featuredStar = project.featured
+      ? `<svg class="featured-star" viewBox="0 0 24 24" fill="currentColor">
+           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+         </svg>`
+      : '';
 
     const githubLinkHtml = project.link
       ? `<a href="${project.link}" target="_blank" class="card-github-link" onclick="event.stopPropagation()">
@@ -76,6 +85,7 @@ function renderProjects() {
         <div class="card-panel card-panel-tech">
           <div class="card-tech-list">${techHtml}</div>
         </div>
+        ${featuredStar}
         ${githubLinkHtml}
       </div>
     `;

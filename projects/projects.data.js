@@ -1,15 +1,13 @@
-// ============================================================
-// PROJECTS DATA — edit this file to manage all projects
-// Each project can have its own images in assets/projects/
-// ============================================================
+/* ============================================================
+   PROJECTS DATA
+   Add / edit projects here.
+============================================================ */
 
 const PROJECTS = [
   {
     id: "fire-detection",
     year: "2023",
     title: "Fire Detection System",
-    shortDesc: "Real-time fire detection with optimized escape routing.",
-    tags: ["YOLOv5", "Computer Vision", "Python"],
     emoji: "🔥",
     image: "assets/projects/fire-detection.jpg",
     tech: [
@@ -24,14 +22,12 @@ const PROJECTS = [
       <p>The system achieved real-time inference at 30+ FPS and was demonstrated as a proof-of-concept for smart building safety systems.</p>
     `,
     images: [],
-    link: ""
+    link: "",
   },
   {
     id: "breathing-rate",
     year: "2024",
     title: "Breathing Rate Monitoring",
-    shortDesc: "Non-contact breathing rate measurement using video analysis.",
-    tags: ["Signal Processing", "Research", "OpenCV"],
     emoji: "💨",
     image: "assets/projects/breathing-rate.jpg",
     tech: [
@@ -46,14 +42,12 @@ const PROJECTS = [
       <p>This was primarily a research effort — measuring accuracy across different lighting conditions, distances, and subject demographics. Results were promising enough to be submitted to a student research competition.</p>
     `,
     images: [],
-    link: ""
+    link: "",
   },
   {
     id: "emotion-recognition",
     year: "2025",
     title: "WeFineCSI - Emotion Recognition System",
-    shortDesc: "Deep learning model to detect human emotions from facial expressions.",
-    tags: ["Deep Learning", "CNN", "Facial Analysis"],
     emoji: "😊",
     image: "assets/projects/emotion-recognition.jpg",
     tech: [
@@ -69,14 +63,12 @@ const PROJECTS = [
       <p>One of the biggest challenges was handling partial occlusions and varying lighting. I addressed this with aggressive augmentation and attention mechanisms in the final convolutional layers.</p>
     `,
     images: [],
-    link: "https://github.com/minh-quan2811/WeFineCSI"
+    link: "https://github.com/minh-quan2811/WeFineCSI",
   },
   {
     id: "rikai-internship",
     year: "2025",
     title: "RIKAI — AI Internship Project",
-    shortDesc: "RAG pipelines, graph DBs, and LLM workflows in a production environment.",
-    tags: ["LangChain", "RAG", "Neo4j", "DuckDB"],
     emoji: "🤖",
     image: "assets/projects/rikai.jpg",
     tech: [
@@ -92,14 +84,12 @@ const PROJECTS = [
       <p>A highlight was integrating Neo4j to represent domain knowledge as a graph, enabling relationship-aware queries that flat vector search couldn't handle. This became the foundation for the contract role that followed.</p>
     `,
     images: [],
-    link: ""
+    link: "",
   },
   {
     id: "student-performance",
     year: "2025",
     title: "SPARK - Student Performance & Management System",
-    shortDesc: "Full-stack system for tracking and managing student academic data.",
-    tags: ["Full Stack", "Database", "Python"],
     emoji: "📊",
     image: "assets/projects/student-mgmt.jpg",
     tech: [
@@ -115,14 +105,12 @@ const PROJECTS = [
       <p>I focused heavily on clean database schema design and API architecture, with role-based access so students, teachers, and admins each see appropriate views.</p>
     `,
     images: [],
-    link: "https://github.com/minh-quan2811/SPARK"
+    link: "https://github.com/minh-quan2811/SPARK",
   },
   {
     id: "bone-fracture",
     year: "2026",
     title: "FracturAInsight - Bone Fracture Detection",
-    shortDesc: "Advanced medical imaging model for automated bone fracture classification.",
-    tags: ["Medical AI", "CNN", "Image Segmentation"],
     emoji: "🦴",
     image: "assets/projects/bone-fracture.jpg",
     tech: [
@@ -138,70 +126,6 @@ const PROJECTS = [
       <p>The ongoing focus is improving robustness on edge cases — subtle hairline fractures, pediatric bones, and images with poor contrast. This project is being developed with the goal of supporting radiologists in under-resourced settings.</p>
     `,
     images: [],
-    link: "https://github.com/minh-quan2811/FracturAInsight"
+    link: "https://github.com/minh-quan2811/FracturAInsight",
   },
-];
-
-// ============================================================
-// EXPERIENCE DATA — edit this file to manage all companies
-// ============================================================
-
-const COMPANIES = [
-  {
-    id: "rikai",
-    name: "RIKAI Co., Ltd",
-    location: "Da Nang, Vietnam",
-    logo: "assets/companies/rikai.jpg",
-    logoFallback: "RI",
-    url: "",
-    roles: [
-      {
-        title: "AI Engineer",
-        type: "Contract",
-        start: "Aug 2025",
-        end: "Oct 2025",
-        points: [
-          "Developed a Marketing QA chatbot using LangGraph, handling conversation flow and intent logic.",
-          "Built and maintained a vector database pipeline using LlamaIndex integrated with Qdrant.",
-          "Improved response accuracy and retrieval efficiency for knowledge-based queries.",
-        ],
-        tags: ["LangGraph", "LlamaIndex", "Qdrant", "Chatbot"],
-      },
-      {
-        title: "AI Intern",
-        type: "Internship",
-        start: "Jun 2025",
-        end: "Aug 2025",
-        points: [
-          "Applied Large Language Models (LLMs) using LangChain and LangGraph.",
-          "Explored Retrieval-Augmented Generation (RAG) for knowledge systems.",
-          "Worked with Neo4j (graph database) and DuckDB (analytical database).",
-          "Used SQL for querying and data management.",
-        ],
-        tags: ["LangChain", "RAG", "Neo4j", "DuckDB", "SQL"],
-      },
-    ],
-  },
-
-  // ── ADD ANOTHER COMPANY HERE ───────────────────────────────
-  // {
-  //   id: "acme",
-  //   name: "Acme Corp",
-  //   location: "Ho Chi Minh City, Vietnam",
-  //   logo: "assets/acme-logo.png",
-  //   logoFallback: "AC",
-  //   url: "https://acme.example.com",
-  //   roles: [
-  //     {
-  //       title: "Senior AI Engineer",
-  //       type: "Full-time",
-  //       start: "Nov 2025",
-  //       end: "Present",
-  //       points: [
-  //         "Led a team of 3 engineers building an internal LLM platform.",
-  //       ],
-  //       tags: ["Python", "FastAPI", "LLM"],
-  //     },
-  //   ],
-  // },
 ];

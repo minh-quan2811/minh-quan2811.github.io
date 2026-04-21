@@ -1,0 +1,108 @@
+/* ===========================
+   ACHIEVEMENTS
+=========================== */
+.achievements-section {
+  background: var(--surface-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.achievements-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(200,101,26,0.12) 30px,
+      rgba(200,101,26,0.12) 31px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      rgba(184,134,11,0.09) 30px,
+      rgba(184,134,11,0.09) 31px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.achievements-section .section-inner,
+.achievements-section .achievements-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.achievement-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg), 0 0 12px 2px rgba(200,101,26,0.20);
+}
+
+.achievement-img-wrap {
+  height: 130px;
+  background: var(--surface-alt);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievement-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.achievement-body { padding: 20px; }
+
+.achievement-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+
+.achievement-badge.gold   { background: #FFF8E7; color: var(--gold);   }
+.achievement-badge.silver { background: #F1F3F5; color: var(--silver); }
+.achievement-badge.bronze { background: #FBF3EE; color: var(--bronze); }
+
+.achievement-body p {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* ===========================
+   ACHIEVEMENTS — RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .achievements-grid { grid-template-columns: 1fr; }
+}

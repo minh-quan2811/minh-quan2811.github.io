@@ -1,0 +1,122 @@
+/* ===========================
+   ABOUT
+=========================== */
+.about-section {
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+.about-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 72px;
+  align-items: center;
+  width: 100%;
+}
+
+.about-image-wrap { position: relative; }
+
+.about-image-frame {
+  width: 260px;
+  height: 320px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-alt);
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-image-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-style: italic;
+  color: var(--ink-3);
+  background: var(--surface-alt);
+}
+
+.about-image-frame img + .image-placeholder { display: none; }
+.about-image-frame.no-image img { display: none; }
+
+.about-tag {
+  position: absolute;
+  bottom: -16px; right: -16px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  letter-spacing: 0.04em;
+}
+
+.about-content { padding: 20px 0; }
+
+.about-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.about-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.about-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.about-bio {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.75;
+  margin-bottom: 28px;
+  max-width: 500px;
+}
+
+.about-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   ABOUT — RESPONSIVE
+=========================== */
+@media (max-width: 700px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .about-image-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-links { justify-content: center; }
+}

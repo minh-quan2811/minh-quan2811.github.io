@@ -30,7 +30,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   font-size: 16px;
 }
 
@@ -449,11 +449,13 @@ ul { list-style: none; }
 
 /* Vertical line connecting logo to the bottom of roles */
 .company-line {
-  width: 1.5px;
+  width: 2px;
   flex: 1;
   margin-top: 10px;
-  background: linear-gradient(to bottom, var(--border) 80%, transparent);
+  background: linear-gradient(to bottom, rgba(200,101,26,0.70) 60%, transparent);
+  box-shadow: 0 0 6px 1px rgba(200,101,26,0.20);
   min-height: 24px;
+  border-radius: 2px;
 }
 
 /* Right: company name + stacked roles */
@@ -537,15 +539,17 @@ ul { list-style: none; }
   border-radius: 50%;
   background: var(--surface);
   border: 2px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(200,101,26,0.12), 0 0 8px 2px rgba(200,101,26,0.18);
   flex-shrink: 0;
 }
 
 .role-connector {
-  width: 1.5px;
+  width: 2px;
   flex: 1;
   margin-top: 5px;
-  background: var(--border);
+  background: linear-gradient(to bottom, rgba(200,101,26,0.45), rgba(200,101,26,0.15));
   min-height: 12px;
+  border-radius: 2px;
 }
 
 .role-item:last-child .role-connector {
@@ -634,6 +638,37 @@ ul { list-style: none; }
 =========================== */
 .achievements-section {
   background: var(--surface-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.achievements-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(200,101,26,0.12) 30px,
+      rgba(200,101,26,0.12) 31px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      rgba(184,134,11,0.09) 30px,
+      rgba(184,134,11,0.09) 31px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.achievements-section .section-inner,
+.achievements-section .achievements-grid {
+  position: relative;
+  z-index: 1;
 }
 
 .achievements-grid {
@@ -648,12 +683,13 @@ ul { list-style: none; }
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
 
 .achievement-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg), 0 0 12px 2px rgba(200, 101, 26, 0.20);
 }
 
 .achievement-img-wrap {
@@ -724,13 +760,15 @@ ul { list-style: none; }
   overflow: hidden;
   cursor: pointer;
   box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   position: relative;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+  /* box-shadow: var(--shadow-lg), 0 0 22px 6px rgba(255, 132, 1, 0.964); */
+  box-shadow: var(--shadow-lg), 0 0 14px 3px rgba(255, 132, 1, 0.18);
 }
 
 .project-card:hover .project-overlay {
@@ -1184,6 +1222,38 @@ ul { list-style: none; }
 =========================== */
 .contact-section {
   background: var(--surface-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(200,101,26,0.50) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 18px 18px;
+  mask-image: radial-gradient(
+    ellipse 90% 90% at 50% 50%,
+    transparent 20%,
+    black 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 90% at 50% 50%,
+    transparent 20%,
+    black 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-section .section-inner,
+.contact-section .contact-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .contact-inner {

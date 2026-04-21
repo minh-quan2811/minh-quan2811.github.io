@@ -36,15 +36,32 @@ function highlightNavLink() {
 }
 
 // ── SMOOTH SCROLL ─────────────────────────────────────────
+function smoothScrollTo(targetY, duration) {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  if (Math.abs(diff) < 2) return;
+  let start = null;
+  const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / duration, 1);
+    window.scrollTo(0, startY + diff * ease(p));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const offset = navbar.offsetHeight;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+    const href = this.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    closeMobileMenu();
+    const top = target.getBoundingClientRect().top + window.scrollY - (navbar.offsetHeight + 16);
+    const duration = Math.min(Math.max(Math.abs(top - window.scrollY) * 0.35, 280), 550);
+    smoothScrollTo(top, duration);
   });
 });
 

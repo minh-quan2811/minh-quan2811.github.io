@@ -76,14 +76,31 @@ document.addEventListener('click', e => {
 // ── SCROLL REVEAL ─────────────────────────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
 function observeRevealElements() {
   document.querySelectorAll(
     '.reveal, .reveal-delay-1, .reveal-delay-2, .reveal-delay-3, .reveal-delay-4, .reveal-delay-5'
   ).forEach(el => revealObserver.observe(el));
+
+  document.querySelectorAll('.achievements-grid, .projects-grid').forEach(grid => {
+    const cards = Array.from(grid.children);
+    const COLS = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+
+    cards.forEach((card, i) => {
+      const col = i % COLS;
+      card.style.transitionDelay = `${col * 0.12}s`;
+      card.addEventListener('transitionend', () => {
+        card.style.transitionDelay = '0s';
+      }, { once: true });
+      revealObserver.observe(card);
+    });
+  });
 }
 
 // ── DURATION HELPERS ──────────────────────────────────────
@@ -125,6 +142,27 @@ function companyDuration(company) {
   if (years) parts.push(`${years} yr${years > 1 ? 's' : ''}`);
   if (rem)   parts.push(`${rem} mo${rem > 1 ? 's' : ''}`);
   return parts.join(' ');
+}
+
+// ── COPY EMAIL ────────────────────────────────────────────
+function copyEmail(el) {
+  const email = 'danggminhquan2811@gmail.com';
+  navigator.clipboard.writeText(email).then(() => {
+    const original = el.innerHTML;
+    el.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      Copied!
+    `;
+    el.style.color = 'var(--accent)';
+    el.style.borderColor = 'var(--accent)';
+    setTimeout(() => {
+      el.innerHTML = original;
+      el.style.color = '';
+      el.style.borderColor = '';
+    }, 2000);
+  });
 }
 
 // ── PROJECT MODAL ─────────────────────────────────────────
@@ -279,7 +317,6 @@ function initBackground() {
   positionOrbs();
   window.addEventListener('resize', positionOrbs);
 
-  // Floating geometric accents
   const accentSvg = document.createElementNS(ns, 'svg');
   accentSvg.setAttribute('xmlns', ns);
   accentSvg.setAttribute('aria-hidden', 'true');
@@ -342,14 +379,12 @@ function handleSubmit(e) {
 
 // ── INIT ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  // Render all sections
   renderAbout();
   renderExperience();
   renderAchievements();
   renderProjects();
   renderContact();
 
-  // Init after DOM is populated
   initBackground();
   observeRevealElements();
 });
